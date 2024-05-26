@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "1dc50d78-972d-4d56-a81c-6dc109097ae6",
+		"name": "bartender",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27765369"
+	},
+	"item": [
+		{
+			"name": "public",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/public",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"public"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "secret",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImV4YW1wbGVAZXhhbXBsZS5jb20iLCJleHAiOjE3MTY3MzA3NDR9.OFnQurJvI1HRNFyhmwH6JAYV_WJDcazU70qtyHKeHaY",
+						"uuid": "d367891e-e2db-4629-a643-a60bb0e61cef"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/secret",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"secret"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json",
+						"uuid": "6d4afb18-61f8-46a0-93a3-ed21a97973fe"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"example@example.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/token",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

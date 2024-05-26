@@ -1,0 +1,41 @@
+mod api;
+
+use std::process;
+use axum::{
+    routing::{get, post},
+    Router,
+};
+use tokio::net::TcpListener;
+use jwt::jwt::check_jwt_secret;
+use logger::log_level::LogLevel;
+use logger::logger::new_tracer_logger;
+use crate::api::example::{public_handler, secret_handler};
+use crate::api::token::token_handler;
+
+#[tokio::main(flavor = "multi_thread", worker_threads = 4)]
+async fn main() {
+    println!("Handyman service started!");
+    check_jwt_secret();
+
+    if let Err(err) = run().await {
+        eprintln!("Fatal error occurred: {}", err);
+        process::exit(1);
+    }
+}
+
+async fn run() -> anyhow::Result<()> {
+    new_tracer_logger(LogLevel::Info);
+
+    let routes = Router::new()
+        .route("/token", post(token_handler))
+        // TODO: example
+        .route("/public", get(public_handler))
+        .route("/secret", get(secret_handler));
+
+    let tcp_listener = TcpListener::bind("localhost:3000")
+        .await?;
+    axum::serve(tcp_listener, routes)
+        .await?;
+
+    Ok(())
+}

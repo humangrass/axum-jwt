@@ -1,0 +1,14 @@
+[workspace]
+resolver = "2"
+default-members = [
+    "services/bartender",
+]
+members = [
+    "libs/jwt",
+    "libs/logger",
+    "services/bartender"
+]
+
+[workspace.dependencies]
+jwt = { path = "libs/jwt" }
+logger = { path = "libs/logger" }
