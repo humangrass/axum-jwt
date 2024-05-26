@@ -14,7 +14,7 @@ use crate::api::token::token_handler;
 
 #[tokio::main(flavor = "multi_thread", worker_threads = 4)]
 async fn main() {
-    println!("Handyman service started!");
+    println!("Bartender service started!");
     check_jwt_secret();
 
     if let Err(err) = run().await {
