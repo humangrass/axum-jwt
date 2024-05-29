@@ -4,11 +4,12 @@ default-members = [
     "services/bartender",
 ]
 members = [
-    "libs/jwt",
+    "middlewares/jwt",
     "libs/logger",
-    "services/bartender"
+    "services/bartender",
+    "services/example",
 ]
 
 [workspace.dependencies]
-jwt = { path = "libs/jwt" }
+jwt = { path = "middlewares/jwt" }
 logger = { path = "libs/logger" }
